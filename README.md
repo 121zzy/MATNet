@@ -1,2 +1,3 @@
 # MATNet
-Codes will be released soon.
+Version:
+Python 3.6
