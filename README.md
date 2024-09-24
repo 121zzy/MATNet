@@ -1,6 +1,9 @@
 # MATNet: Multilevel Attention-Based Transformers for Change Detection in Remote Sensing Images
 This repo is the PyTorch implementation of some works related to remote sensing tasks.
-[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/a-transformer-based-siamese-network-for/change-detection-on-levir-cd)](https://paperswithcode.com/sota/change-detection-on-levir-cd?p=a-transformer-based-siamese-network-for)
+[`Wele Gedara Chaminda Bandara`](https://www.wgcban.com/), and [`Vishal M. Patel`](https://engineering.jhu.edu/vpatel36/sciencex_teams/vishalpatel/)
+
+:notebook_with_decorative_cover: **Accepted for publication at [`IGARSS-22`](https://www.igarss2022.org/default.php), Kuala Lumpur, Malaysia.**
+
 ## Environment setting
 ```
 Python 3.6.13
