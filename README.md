@@ -1,7 +1,7 @@
 # MATNet: Multilevel Attention-Based Transformers for Change Detection in Remote Sensing Images
 This repo is the PyTorch implementation of some works related to remote sensing tasks.
 ## :speech_balloon: Network Architecture
-![image-20210228153142126](./images/MATNet.jpeg)
+![image-20210228153142126](./images/net_re.pdf)
 
 ## Environment setting
 ```
