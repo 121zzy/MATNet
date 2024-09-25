@@ -60,7 +60,7 @@ if __name__ == '__main__':
     parser.add_argument('--dataset', default='CDDataset', type=str)
     parser.add_argument('--data_name', default='LEVIR', type=str)
 
-    parser.add_argument('--batch_size', default=4, type=int)
+    parser.add_argument('--batch_size', default=8, type=int)
     parser.add_argument('--split', default="train", type=str)
     parser.add_argument('--split_val', default="val", type=str)
 
@@ -75,10 +75,10 @@ if __name__ == '__main__':
     parser.add_argument('--multi_scale_infer', default=False, type=str)
     parser.add_argument('--multi_pred_weights', nargs = '+', type = float, default = [0.5, 0.5, 0.5, 0.8, 1.0])
 
-    parser.add_argument('--net_G', default='ChangeFormerV6', type=str,
+    parser.add_argument('--net_G', default='MATNet', type=str,
                         help='base_resnet18 | base_transformer_pos_s4 | '
                              'base_transformer_pos_s4_dd8 | '
-                             'base_transformer_pos_s4_dd8_dedim8|ChangeFormerV5|SiamUnet_diff')
+                             'base_transformer_pos_s4_dd8_dedim8|SiamUnet_diff')
     parser.add_argument('--loss', default='ce', type=str)
 
     # optimizer
