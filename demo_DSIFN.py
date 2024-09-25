@@ -21,10 +21,10 @@ def get_args():
     # args
     # ------------
     parser = ArgumentParser()
-    parser.add_argument('--project_name', default='ChangeFormer_LEVIR', type=str)
+    parser.add_argument('--project_name', default='MATNet_DSIFN', type=str)
     parser.add_argument('--gpu_ids', type=str, default='0', help='gpu ids: e.g. 0  0,1,2, 0,2. use -1 for CPU')
-    parser.add_argument('--checkpoint_root', default='/home/zhongyu.zhang/project/ChangeFormer/checkpoints/', type=str)
-    parser.add_argument('--output_folder', default='samples_DSIFN/predict_ChangeFormerV6', type=str)
+    parser.add_argument('--checkpoint_root', default='/home/zzy/project/MATNet/checkpoints/', type=str)
+    parser.add_argument('--output_folder', default='samples_DSIFN/predict_MATNet', type=str)
 
     # data
     parser.add_argument('--num_workers', default=0, type=int)
@@ -38,8 +38,8 @@ def get_args():
     # model
     parser.add_argument('--n_class', default=2, type=int)
     parser.add_argument('--embed_dim', default=256, type=int)
-    parser.add_argument('--net_G', default='ChangeFormerV6', type=str,
-                        help='ChangeFormerV6 | CD_SiamUnet_diff | SiamUnet_conc | Unet | DTCDSCN | base_resnet18 | base_transformer_pos_s4_dd8 | base_transformer_pos_s4_dd8_dedim8|')
+    parser.add_argument('--net_G', default='MATNet', type=str,
+                        help='MATNet | CD_SiamUnet_diff | SiamUnet_conc | Unet | DTCDSCN | base_resnet18 | base_transformer_pos_s4_dd8 | base_transformer_pos_s4_dd8_dedim8|')
     parser.add_argument('--checkpoint_name', default='best_ckpt.pt', type=str)
 
     args = parser.parse_args()
