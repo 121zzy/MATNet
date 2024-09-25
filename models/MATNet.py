@@ -524,7 +524,7 @@ class MAM(nn.Module):
         return outputs
         
 
-class CHCAMNet(nn.Module):
+class matnet(nn.Module):
     def __init__(self, input_nc=3, output_nc=2, decoder_softmax=False, embed_dim=256):
         super(CHCAMNet, self).__init__()
         #Transformer Encoder
