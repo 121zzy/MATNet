@@ -5,9 +5,9 @@ gpus=0
 data_name=LEVIR
 net_G=base_transformer_pos_s4_dd8
 split=test
-vis_root=/media/lidan/ssd2/ChangeFormer/vis
+vis_root=/media/lidan/ssd2/MATNet/vis
 project_name=CD_base_transformer_pos_s4_dd8_LEVIR_b8_lr0.01_train_test_200_linear
-checkpoints_root=/media/lidan/ssd2/ChangeFormer/checkpoints
+checkpoints_root=/media/lidan/ssd2/MATNet/checkpoints
 checkpoint_name=best_ckpt.pt
 img_size=256
 
