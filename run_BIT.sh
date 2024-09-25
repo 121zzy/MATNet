@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 gpus=0
-checkpoint_root=/media/dsk2/zhongyu.zhang/project/ChangeFormer/checkpoints
-vis_root=/media/dsk2/zhongyu.zhang/project/ChangeFormer/vis
+checkpoint_root=/media/dsk2/zzy/project/ChangeFormer/checkpoints
+vis_root=/media/dsk2/zzy/project/ChangeFormer/vis
 data_name=LEVIR #LEVIR, DSIFN，CDD,SYSU
 
 img_size=256
