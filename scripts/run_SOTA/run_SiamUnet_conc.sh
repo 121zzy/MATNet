@@ -10,8 +10,8 @@
 gpus=0
 
 #Set paths
-checkpoint_root=/home/zhongyu.zhang/project/ChangeFormer/checkpoints
-vis_root=/home/zhongyu.zhang/project/ChangeFormer/vis
+checkpoint_root=/home/zzy/project/ChangeFormer/checkpoints
+vis_root=/home/zzy/project/ChangeFormer/vis
 data_name=CDD #LEVIR, DSIFN
 
 
