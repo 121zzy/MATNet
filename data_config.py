@@ -7,16 +7,16 @@ class DataConfig:
         self.data_name = data_name
         if data_name == 'CDD':
             self.label_transform = "norm"
-            self.root_dir = '/media/dsk2/zhongyu.zhang/project/CDD_ch/'
+            self.root_dir = '/media/dsk2/zzy/project/CDD_ch/'
         elif data_name == 'DSIFN':
             self.label_transform = "norm"
-            self.root_dir = '/media/dsk2/zhongyu.zhang/project/DSIFN_ch/'
+            self.root_dir = '/media/dsk2/zzy/project/DSIFN_ch/'
         elif data_name == 'LEVIR':
             self.label_transform = "norm"
-            self.root_dir = '/media/dsk2/zhongyu.zhang/project/LEVIR_ch/'
-        elif data_name == 'CDD1':
+            self.root_dir = '/media/dsk2/zzy/project/LEVIR_ch/'
+        elif data_name == 'SYSU':
             self.label_transform = "norm"
-            self.root_dir = '/media/lidan/ssd2/CDData/CDD-CD-256/'
+            self.root_dir = '/media/dsk2/zzy/project/SYSU-ch/'
         elif data_name == 'TYPO':
             self.label_transform = "norm"
             self.root_dir = '/media/lidan/ssd2/CDData/TYPO/'
