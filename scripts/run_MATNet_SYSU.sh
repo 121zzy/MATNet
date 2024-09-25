@@ -8,16 +8,16 @@ checkpoint_root=/media/lidan/ssd2/ChangeFormer/checkpoints
 vis_root=/media/lidan/ssd2/ChangeFormer/vis
 
 # To add custom dataset, please adit data.config.py 
-data_name=WHU #Options: LEVIR, DSIFN, WHU, CDD, 
+data_name=SYSU #Options: LEVIR, DSIFN, SYSU, CDD, 
 
 
 img_size=256    
-batch_size=16   
+batch_size=8   
 lr=0.0001         
 max_epochs=200
 embed_dim=256
 
-net_G=ChangeFormerV6        #ChangeFormerV6 is the finalized verion
+net_G=MATNet        
 
 lr_policy=linear
 optimizer=adamw                 #Choices: sgd (set lr to 0.01), adam, adamw
@@ -27,7 +27,7 @@ multi_scale_infer=False
 shuffle_AB=False
 
 #Initializing from pretrained weights
-pretrain=/media/lidan/ssd2/ChangeFormer/pretrained_segformer/segformer.b2.512x512.ade.160k.pth
+pretrain=/media/lidan/ssd2/MATNet/pretrained_segformer/segformer.b2.512x512.ade.160k.pth
 
 #Train and Validation splits
 split=train         #trainval
