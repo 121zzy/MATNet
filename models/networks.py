@@ -13,13 +13,8 @@ from models.ChangeFormer import ChangeFormerV1, ChangeFormerV2, ChangeFormerV3, 
 from models.SiamUnet_diff import SiamUnet_diff
 from models.SiamUnet_conc import SiamUnet_conc
 from models.Unet import Unet
-from models.DTCDSCN import CDNet34
-from models.IFNet import UperNet
-from models.DASNet import UperNet
-from models.STANet import StaNet
-from models.SNUNet import SNUNet_ECAM
 from models.DMINet import DMINet
-from models.CH_CAM import CHCAMNet
+from models.MATNet import matnet
 ###############################################################################
 # Helper Functions
 ###############################################################################
@@ -140,31 +135,13 @@ def define_G(args, init_type='normal', init_gain=0.02, gpu_ids=[]):
     elif args.net_G == 'base_transformer_pos_s4_dd8':
         net = BASE_Transformer(input_nc=3, output_nc=2, token_len=4, resnet_stages_num=4,
                              with_pos='learned', enc_depth=1, dec_depth=8)
+    
+    elif args.net_G == "MATNet":
+        net=matnet(embed_dim=args.embed_dim)
 
     elif args.net_G == 'base_transformer_pos_s4_dd8_dedim8':
         net = BASE_Transformer(input_nc=3, output_nc=2, token_len=4, resnet_stages_num=4,
                              with_pos='learned', enc_depth=1, dec_depth=8, decoder_dim_head=8)
-
-    elif args.net_G == 'ChangeFormerV1':
-        net = ChangeFormerV1() #ChangeFormer with Transformer Encoder and Convolutional Decoder
-    
-    elif args.net_G == 'ChangeFormerV2':
-        net = ChangeFormerV2() #ChangeFormer with Transformer Encoder and Convolutional Decoder
-
-    elif args.net_G == 'ChangeFormerV3':
-        net = ChangeFormerV3() #ChangeFormer with Transformer Encoder and Convolutional Decoder (Fuse)
-
-    elif args.net_G == 'ChangeFormerV4':
-        net = ChangeFormerV4() #ChangeFormer with Transformer Encoder and Convolutional Decoder (Fuse)
-    
-    elif args.net_G == 'ChangeFormerV5':
-        net = ChangeFormerV5(embed_dim=args.embed_dim) #ChangeFormer with Transformer Encoder and Convolutional Decoder (Fuse)
-
-    elif args.net_G == 'ChangeFormerV6':
-        net = ChangeFormerV6(embed_dim=args.embed_dim) #ChangeFormer with Transformer Encoder and Convolutional Decoder (Fuse)
-    
-    elif args.net_G == "CHcam":
-        net=CHCAMNet(input_nc=3, output_nc=2)
 
     elif args.net_G == "SiamUnet_diff":
         #Implementation of ``Fully convolutional siamese networks for change detection''
@@ -181,17 +158,6 @@ def define_G(args, init_type='normal', init_gain=0.02, gpu_ids=[]):
         #Implementation of ``Fully convolutional siamese networks for change detection''
         #Code copied from: https://github.com/rcdaudt/fully_convolutional_change_detection
         net = Unet(input_nbr=3, label_nbr=2)
-    
-    elif args.net_G == "DTCDSCN":
-        #The implementation of the paper"Building Change Detection for Remote Sensing Images Using a Dual Task Constrained Deep Siamese Convolutional Network Model "
-        #Code copied from: https://github.com/fitzpchao/DTCDSCN
-        net = CDNet34(in_channels=3)
-
-    elif args.net_G == "SNUNet":
-        net=SNUNet_ECAM(in_ch=3, out_ch=2)
-    
-    elif args.net_G == "DASNet":
-        net=UperNet()
 
     elif args.net_G == "DMINet":
         net=DMINet(num_classes=2, drop_rate=0.2)
