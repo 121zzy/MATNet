@@ -397,9 +397,14 @@ class SCA(nn.Module):
                                     norm_layer(out_channels),
                                     nn.ReLU())
         self.sa=STC(out_channels)
+        # self.conv51 = nn.Sequential(nn.Conv2d(out_channels, out_channels, 3, padding=1, bias=False),
+        #                             norm_layer(out_channels),
+        #                             nn.ReLU())
         self.conv51 = nn.Sequential(nn.Conv2d(out_channels, out_channels, 3, padding=1, bias=False),
                                     norm_layer(out_channels),
-                                    nn.ReLU())
+                                    nn.ReLU(),
+                                    nn.Upsample(size=(256, 256), mode='bilinear', align_corners=False))
+
         self.conv6 = nn.Sequential(nn.Dropout2d(0.1, False), nn.Conv2d(out_channels, out_channels, 1))
 
     def forward(self, x1,x2):
@@ -419,7 +424,7 @@ class SCA(nn.Module):
 
 class MAM(nn.Module):
     def __init__(self, input_transform='multiple_select', in_index=[0, 1, 2, 3], align_corners=True, 
-                    in_channels = [32, 64, 128, 256], embedding_dim= 64, output_nc=2, 
+                    in_channels = [32, 64, 128, 256], embedding_dim= 256, output_nc=2, 
                     decoder_softmax = False, feature_strides=[2, 4, 8, 16],norm_layer=nn.BatchNorm2d):
         super(MAM, self).__init__()
         #assert
@@ -452,10 +457,14 @@ class MAM(nn.Module):
         self.sca3=SCA(in_channels=2*self.embedding_dim, out_channels=self.embedding_dim,norm_layer=norm_layer)
         self.sca4=SCA(in_channels=2*self.embedding_dim, out_channels=self.embedding_dim,norm_layer=norm_layer)
         self.linear_fuse = nn.Sequential(
-            nn.Conv2d(in_channels, 2,kernel_size=1),
-            nn.BatchNorm2d(2)
+            nn.Conv2d(in_channels=4*self.embedding_dim,out_channels=self.embedding_dim,kernel_size=1),
+            nn.BatchNorm2d(self.embedding_dim)
         )
         self.change_probability = ConvLayer(self.embedding_dim, self.output_nc, kernel_size=3, stride=1, padding=1)
+
+        #Final activation
+        self.output_softmax     = decoder_softmax
+        self.active             = nn.Sigmoid() 
 
     def _transform_inputs(self, inputs):
         """Transform inputs for decoder.
@@ -485,7 +494,6 @@ class MAM(nn.Module):
     def forward(self, inputs1, inputs2):
         x_1 = self._transform_inputs(inputs1)  
         x_2 = self._transform_inputs(inputs2)  
-        print(x1_2.shape)
 
         c1_1, c2_1, c3_1, c4_1 = x_1
         c1_2, c2_2, c3_2, c4_2 = x_2
@@ -502,14 +510,14 @@ class MAM(nn.Module):
         f2_1 = self.linear_c1(c1_2).permute(0,2,1).reshape(n, -1, c1_2.shape[2], c1_2.shape[3])
         time1= self.sca1(f1_1,f2_1)
         outputs.append(time1)
-        #print("ttime",time1.shape) torch.Size([8, 64, 256, 256])
+        #print("ttime",time1.shape) torch.Size([8, 64, 64, 64])>[8,64,256,256]
         time2_1= self.sca2(f1_2,f2_2)
         outputs.append(time2_1)
-        #print("2",time2_1.shape) #torch.Size([8, 64, 256, 256])
+        #print("2",time2_1.shape) #torch.Size([8, 64, 32, 32])>[8,64,256,256]
         time3_1= self.sca3(f1_3,f2_3)
         outputs.append(time3_1)
-        #print("3",time3_1.shape) #torch.Size([8, 64, 256, 256])
-        time4_1 = self.sca4(f1_4,f2_4)
+        #print("3",time3_1.shape) #torch.Size([8, 64, 16, 16])>[8,64,256,256]
+        time4_1 = self.sca4(f1_4,f2_4)   #torch.Size([8, 64, 8, 8])>[8,64,256,256]
         outputs.append(time4_1)
         _c = self.linear_fuse(torch.cat((time4_1, time3_1, time2_1, time1), dim=1))
         cp = self.change_probability(_c)
