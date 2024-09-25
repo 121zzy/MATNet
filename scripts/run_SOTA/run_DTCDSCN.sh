@@ -9,8 +9,8 @@
 gpus=0
 
 #Set paths
-checkpoint_root=/media/lidan/ssd2/ChangeFormer/checkpoints
-vis_root=/media/lidan/ssd2/ChangeFormer/vis
+checkpoint_root=/media/lidan/ssd2/MATNet/checkpoints
+vis_root=/media/lidan/ssd2/MATNet/vis
 data_name=DSIFN #LEVIR, DSIFN
 
 
