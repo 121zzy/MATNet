@@ -4,8 +4,8 @@
 gpus=0
 
 #Set paths
-checkpoint_root=/media/lidan/ssd2/ChangeFormer/checkpoints
-vis_root=/media/lidan/ssd2/ChangeFormer/vis
+checkpoint_root=/media/lidan/ssd2/MATNet/checkpoints
+vis_root=/media/lidan/ssd2/MATNet/vis
 
 # To add custom dataset, please adit data.config.py 
 data_name=SYSU #Options: LEVIR, DSIFN, SYSU, CDD, 
@@ -14,7 +14,7 @@ data_name=SYSU #Options: LEVIR, DSIFN, SYSU, CDD,
 img_size=256    
 batch_size=8   
 lr=0.0001         
-max_epochs=200
+max_epochs=100
 embed_dim=256
 
 net_G=MATNet        
