@@ -3,11 +3,11 @@
 gpus=1
 
 data_name=DSIFN
-net_G=DTCDSCN
+net_G=MATNet
 split=test
-vis_root=/media/dsk2/zhongyu.zhang/project/ChangeFormer/vis
-project_name=DTCDSCN_DSIFN_lr0.01
-checkpoints_root=/media/dsk2/zhongyu.zhang/project/ChangeFormer/checkpoints
+vis_root=/media/dsk2/zzy/project/MATNet/vis
+project_name=CD_MATNet_DSIFN_b8_lr0.01_sgd_train_test_100_linear_ce
+checkpoints_root=/media/dsk2/zzy/project/MATNet/checkpoints
 checkpoint_name=best_ckpt.pt
 img_size=256
 
