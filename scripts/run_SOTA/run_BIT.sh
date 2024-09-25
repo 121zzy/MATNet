@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 gpus=0
-checkpoint_root=/home/zhongyu.zhang/project/ChangeFormer/checkpoints
-vis_root=home/zhongyu.zhang/project/ChangeFormer/vis
+checkpoint_root=/home/zzzy/project/MATNet/checkpoints
+vis_root=home/zzzy/project/MATNet/vis
 data_name=CDD #LEVIR, DSIFN
 
 img_size=256
