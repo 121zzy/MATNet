@@ -3,7 +3,7 @@
 gpus=0
 
 data_name=LEVIR
-net_G=MATNet #This is the best version
+net_G=MATNet 
 split=test
 vis_root=/media/lidan/ssd2/MATNet/vis
 project_name=CD_MATNet_LEVIR_b8_lr0.01_sgd_train_test_100_linear_ce
