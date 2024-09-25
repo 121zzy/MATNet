@@ -3,16 +3,13 @@
 gpus=0
 checkpoint_root=/media/dsk2/zhongyu.zhang/project/ChangeFormer/checkpoints
 vis_root=/media/dsk2/zhongyu.zhang/project/ChangeFormer/vis
-data_name=LEVIR #LEVIR, DSIFN
+data_name=LEVIR #LEVIR, DSIFN，CDD,SYSU
 
 img_size=256
-batch_size=4
+batch_size=8
 lr=0.01
 max_epochs=100
-net_G=base_transformer_pos_s4_dd8
-#base_resnet18
-#base_transformer_pos_s4_dd8
-#base_transformer_pos_s4_dd8_dedim8
+net_G=MATNet
 lr_policy=linear
 
 split=train
